@@ -1,0 +1,58 @@
+<div class="container">
+
+    <!--Start Search-->
+    <div class="row no-gutters mt-4">
+        <div class="col-md-12">
+          <!--Auto Search on Table-->
+          <input class="form-control mb-2"  type="text" placeholder="Auto Search"  autocomplete="off" [(ngModel)]="filterTerm">
+        </div>
+        <div class="col-md-12 mb-2 d-flex">
+          <!--Search For (minimum salary & maximum salary )-->
+          <input class="form-control"  type="text" placeholder="minimum salary "  autocomplete="off" [(ngModel)]="From">
+          <input class="form-control"  type="text" placeholder="maximum salary "  autocomplete="off" [(ngModel)]="TO">
+          <button class="btn btn-info w-25" [disabled]="From === ' ' && TO === ' ' "  (click)="AverageSalary(From , TO)">Search</button>
+        </div>
+       
+    </div>
+    <!--End Search-->
+
+    <!--Start DataTable-->
+    <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-bordered">        
+                <thead>
+                  <tr>
+                    <th scope="col"><img src="../../assets/Icons/profile.png" class="pr-2">First Name</th>
+                    <th scope="col"><img src="../../assets/Icons/profile.png" class="pr-2">Last Name</th>
+                    <th scope="col"><img src="../../assets/Icons/job-search.png" class="pr-2">Hiring Date</th>
+                    <th scope="col"><img src="../../assets/Icons/salary.png" class="pr-2">Salary</th>
+                    <th scope="col"><img src="../../assets/Icons/position.png" class="pr-2">Position</th>
+                    <th scope="col"><img src="../../assets/Icons/department.png" class="pr-2">Department</th>
+                    <th scope="col"><img src="../../assets/Icons/question-mark.png" class="pr-2">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let Employee of DataJson.data.employees | paginate:{itemsPerPage: 9, currentPage:p}  | filter:filterTerm ">
+                    <td data-toggle="tooltip" data-placement="left" title="{{Employee?.fullName_FL}}">{{Employee?.fullName_FL}}</td>
+                    <td data-toggle="tooltip" data-placement="left" title="{{Employee?.fullName_SL}}">{{Employee?.fullName_SL}}</td>
+                    <td data-toggle="tooltip" data-placement="left" title="{{Employee?.hiringDate}}">{{Employee?.hiringDate}}</td>
+                    <td>{{Employee?.firstContractingSalary}}</td>
+                    <td>{{Employee?.position.name_FL}}</td>
+                    <td>{{Employee?.department.name_FL}}</td>
+                    <td>{{Employee?.employeeJobStatuses[0].status}}</td>
+                  </tr>               
+                </tbody>
+              </table>
+            </div>
+            <!--Pagination bar-->
+              <div id="pagination" class="mt-3">
+                <pagination-controls (pageChange)="p=$event"></pagination-controls>
+              </div> 
+
+        </div>
+    </div>
+    <!--End DataTable-->
+</div>
+
+

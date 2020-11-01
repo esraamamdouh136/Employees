@@ -1,0 +1,16 @@
+ul.ngx-pagination {
+    display: flex;
+    justify-content: center;
+}
+
+td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    text-align: center;
+}
+
+a:not([href]):not([class]) {
+    border: 1px solid #bbbbbb;
+}
