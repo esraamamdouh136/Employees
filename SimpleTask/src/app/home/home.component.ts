@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DataServiceService} from '../data-service.service'
 import { NgxPaginationModule } from 'ngx-pagination';
-import {AfterViewInit,ElementRef, ViewChild} from '@angular/core';
 
 
 
@@ -15,7 +14,6 @@ import {AfterViewInit,ElementRef, ViewChild} from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  @ViewChild('myDiv') myDiv: ElementRef;
 
   
   public filterTerm : string;
@@ -38,7 +36,7 @@ export class HomeComponent implements OnInit {
 
   // You can check the result in the console. because there is an error (' Cannot read property 'employees' of undefined ' ) 
   // I searched but I did not find any solution
-  
+
   AverageSalary(value1 , value2){
     let Salaryproperty = this.DataJson.data.employees 
     for (var i in Salaryproperty){

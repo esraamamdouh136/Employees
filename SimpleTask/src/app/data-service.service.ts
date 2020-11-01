@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 // InterFace
 import { Employees } from './employees'
-// resolve Data 
+// resolve Data (To speed up the data)
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";  
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';

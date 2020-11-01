@@ -8,8 +8,8 @@
         </div>
         <div class="col-md-12 mb-2 d-flex">
           <!--Search For (minimum salary & maximum salary )-->
-          <input class="form-control"  type="text" placeholder="minimum salary "  autocomplete="off" [(ngModel)]="From">
-          <input class="form-control"  type="text" placeholder="maximum salary "  autocomplete="off" [(ngModel)]="TO">
+          <input class="form-control"  type="text" placeholder="Search About (minimum salary) "  autocomplete="off" [(ngModel)]="From">
+          <input class="form-control"  type="text" placeholder="Search About (maximum salary) "  autocomplete="off" [(ngModel)]="TO">
           <button class="btn btn-info w-25" [disabled]="From === ' ' && TO === ' ' "  (click)="AverageSalary(From , TO)">Search</button>
         </div>
        
@@ -33,6 +33,7 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <!-- you can see the full name when you hover on first name or last name or hiring data -->
                   <tr  *ngFor="let Employee of DataJson.data.employees | paginate:{itemsPerPage: 9, currentPage:p}  | filter:filterTerm ">
                     <td data-toggle="tooltip" data-placement="left" title="{{Employee?.fullName_FL}}">{{Employee?.fullName_FL}}</td>
                     <td data-toggle="tooltip" data-placement="left" title="{{Employee?.fullName_SL}}">{{Employee?.fullName_SL}}</td>
